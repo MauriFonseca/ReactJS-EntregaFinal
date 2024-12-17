@@ -5,15 +5,15 @@ import CartWidget from './CartWidget'
 import { Link } from 'react-router-dom'
 
 
-export default function CustomNavbar() {
+export default function NavbarComp() {
     return (
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar className='sNav'>
         <Container>
-          <Navbar.Brand as={Link} to='/'><h1>Librería Petricor</h1></Navbar.Brand>
+          <Navbar.Brand as={Link} to='/'><h1>Petricor Store</h1></Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to='/category/jewelery'>Joyeria</Nav.Link>
-            <Nav.Link as={Link} to='/category/electronics'>Electronica</Nav.Link>
-            <Nav.Link as={Link} to='/category/clothing'>Ropa</Nav.Link>
+            <Nav.Link as={Link} to='/category/Economia'>Economia</Nav.Link>
+            <Nav.Link as={Link} to='/category/Filosofia'>Filosofia</Nav.Link>
+            <Nav.Link as={Link} to='/category/Historias'>Historias</Nav.Link>
           </Nav>
         <CartWidget />
         </Container>

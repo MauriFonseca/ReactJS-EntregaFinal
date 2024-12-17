@@ -1,26 +1,28 @@
 import Button from 'react-bootstrap/Button'
-import { useEffect, useState } from 'react'
+import { useState, useContext } from 'react'
+import { cartContext } from '../context/cartContext'
 
-export default function ItemCount () {
+export default function ItemCount ({ detail }) {
     const [count, setCount] = useState(0)
-
-    useEffect (() => {
-        console.log ('se disparo el efecto')
-
-        return () => {
-            console.log ('se desmonto')
-        }
-    }, [count])
-
+    const { addToCart } = useContext(cartContext)
 
     const handleAdd = () => setCount (count + 1)
     const handleSub = () => {
         if (count > 0) setCount(prevCount => prevCount - 1);
     }
+    const handleAddToCart = () => { 
+        addToCart({ ...detail, qty: count})
+        Swal.fire({ 
+            title: "¡Producto agregado!",
+            text: `Has agregado ${count} unidades al carrito.`,
+            icon: "success",
+            confirmButtonText: "OK",
+            draggable: true
+        })
+    }
 
     return (
-        <div className='d-flex flex-column align-items-center'
-             style={{ width: 300}}>
+        <div className='style_ItemCount'>
         <p className='text-center border' style={{ 
             width: '100%', 
             padding: '10px', 
@@ -45,9 +47,14 @@ export default function ItemCount () {
             +
         </Button>
         </div>
-        <Button variant='primary'>
-            Add to cart
+          <Button
+                variant='primary'
+                className='mt-2'
+                onClick={handleAddToCart}
+               
+            >
+                Añadir al carrito
             </Button>
         </div>
-    )
+    );
 }
