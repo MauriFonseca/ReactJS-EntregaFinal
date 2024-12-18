@@ -8,7 +8,7 @@ export default function ItemCount ({ detail }) {
 
     const handleAdd = () => setCount (count + 1)
     const handleSub = () => {
-        if (count > 0) setCount(prevCount => prevCount - 1);
+        if (count > 0) setCount(prevCount => prevCount - 1)
     }
     const handleAddToCart = () => { 
         addToCart({ ...detail, qty: count})
@@ -51,10 +51,9 @@ export default function ItemCount ({ detail }) {
                 variant='primary'
                 className='mt-2'
                 onClick={handleAddToCart}
-               
             >
                 Añadir al carrito
             </Button>
         </div>
-    );
+    )
 }

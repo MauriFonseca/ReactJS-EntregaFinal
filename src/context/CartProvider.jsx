@@ -16,21 +16,24 @@ export default function CartProvider ({ children }) {
             setCart([...cart, product])
         }
     }
-
     const getQuantity = () => {
         const qtyOnly = cart.map(prod => prod.qty)
         const total = qtyOnly.reduce((acc, current) => acc + current, 0)
         return total
     }
-
     const getTotal = () => {
         const pricesOnly = cart.map(prod => prod.qty*prod.price)
         const total = pricesOnly.reduce((acc, current) => acc + current, 0)
         return total
     }
-
+    const removeFromCart = (productId) => {
+        setCart((prevCart) => prevCart.filter((product) => product.id !== productId))
+    }
+    const clearCart = () => {
+        setCart([])
+    }
     return (
-        <cartContext.Provider value={{ cart, addToCart, getQuantity, getTotal }}>
+        <cartContext.Provider value={{ cart, addToCart, getQuantity, getTotal, removeFromCart, clearCart }}>
             {children}
         </cartContext.Provider>
     )

@@ -7,8 +7,22 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background: radial-gradient(circle, #8B4513, #9c6035);
+  background: radial-gradient(circle, #ad5414, #d38248);
   justify-content: space-evenly;
+}
+a{
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active{
+  align-items: center;
+  color: #36da49;
+}
+.btn{
+  width: 50%;
 }
 .cart_style {
   display: flex;
@@ -118,7 +132,7 @@
   display: flex;
   justify-content: center; 
   align-items: center; 
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

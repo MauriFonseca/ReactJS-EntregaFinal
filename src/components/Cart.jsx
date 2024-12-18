@@ -6,14 +6,14 @@ import { serverTimestamp } from 'firebase/database'
 import { createOrder } from '../firebase/db'
 
 export default function Cart () {
-    const { cart, getTotal } = useCart()
+    const { cart, getTotal, removeFromCart, clearCart } = useCart()
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
     
-        const email = e.target[0].value;
-        const name = e.target[1].value;
-        const phone = e.target[2].value;
+        const email = e.target[0].value
+        const name = e.target[1].value
+        const phone = e.target[2].value
     
         const order = {
             buyer: { name, email, phone },
@@ -41,7 +41,6 @@ export default function Cart () {
                 })
             })
     }
-
     return (
         <div className='d-flex justify-content-between'>
             <ListGroup className='w-50 me-3'>
@@ -51,10 +50,22 @@ export default function Cart () {
                     <img src={prod.image} alt={prod.name} style={{ width: "100px", height: "auto"}} />
                     <div>Precio unitario: ${prod.price.toFixed(2)}</div>
                     <div>Total: ${(prod.price * prod.qty).toFixed(2)}</div>
+                <Button
+                    variant="danger"
+                    onClick={() => removeFromCart(prod.id)}
+                    className="ms-3"
+                    >
+                    Eliminar Producto
+                </Button>
                 </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
                     <h3>Total de la compra: ${getTotal().toFixed(2)}</h3>
+                </ListGroup.Item>
+                <ListGroup.Item className="text-center">
+                    <Button className='btn' variant="warning" onClick={clearCart}>
+                        Vaciar Carrito
+                    </Button>
                 </ListGroup.Item>
             </ListGroup>
 
@@ -63,7 +74,7 @@ export default function Cart () {
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" required />
             <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            Esta informacion siempre va a ser confidencial :)
             </Form.Text>
             </Form.Group>
 

@@ -12,8 +12,6 @@ export const getProducts = async (setItems) => {
 })
     setItems(products)
 }
-
-
 export const getFilterProducts = async (category, setItems) => {
     const q = query(collection(db, "items"), where("category", "==", category))
     const products = []
@@ -25,7 +23,6 @@ querySnapshot.forEach((doc) => {
 })
     setItems(products)
 }
-
 export const getDetail = async (id, setDetail) => {
 
     const docRef = doc(db, "items", id)
@@ -37,9 +34,6 @@ export const getDetail = async (id, setDetail) => {
     console.log("No such document!");
     }
 }
-
-
-
 export const createOrder = async (order) => {
     try {
         const docRef = await addDoc(collection(db, "orders"), order)

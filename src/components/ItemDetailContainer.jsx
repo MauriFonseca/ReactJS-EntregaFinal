@@ -11,7 +11,6 @@ export default function ItemDetailContainer () {
     useEffect (() => {
         getDetail(id, setDetail)
     }, [id])
-
     return (
         <ItemDetail detail={detail} />
     )

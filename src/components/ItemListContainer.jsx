@@ -11,7 +11,6 @@ export default function ItemListContainer() {
     useEffect(() => {
         id ? getFilterProducts(id, setItems) : getProducts(setItems)
             }, [id])
-
         if (items.length === 0) {
             return (
                 <div className="clock_style">
